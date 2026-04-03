@@ -1031,6 +1031,12 @@ ul { list-style: none; }
   appearance: auto;
 }
 
+.footer__copyright {
+  padding: 0 var(--px) 20px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
 /* ============================================
    PRODUCT MODAL
    ============================================ */
