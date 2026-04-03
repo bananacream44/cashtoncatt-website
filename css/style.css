@@ -129,7 +129,7 @@ ul { list-style: none; }
 }
 
 .nav__link--cat {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0;
@@ -159,7 +159,7 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0;
