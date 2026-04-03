@@ -997,9 +997,7 @@ ul { list-style: none; }
 }
 
 .footer__inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 28px var(--px);
+  padding: 28px var(--px) 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
