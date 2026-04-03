@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — cashtoncatt</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0a0a0a;
+      --bg2:     #111111;
+      --bg3:     #1a1a1a;
+      --border:  #2a2a2a;
+      --text:    #e0e0e0;
+      --muted:   #666666;
+      --accent:  #ffffff;
+      --danger:  #cc3333;
+      --success: #33cc66;
+    }
+
+    html { font-size: 14px; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+    input, textarea, select {
+      font-family: inherit;
+      font-size: 13px;
+      color: var(--text);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      width: 100%;
+      transition: border-color 0.15s;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    input[type="checkbox"] {
+      width: auto;
+      accent-color: var(--accent);
+    }
+    input[type="color"] {
+      width: 48px;
+      height: 32px;
+      padding: 2px;
+      cursor: pointer;
+    }
+    input[type="file"] {
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--muted);
+    }
+    textarea { resize: vertical; }
+    select option { background: var(--bg3); }
+
+    /* ---- Layout ---- */
+    .admin-header {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .admin-header__brand {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .admin-header__right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .admin-main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .admin-section-title {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ---- Notice ---- */
+    .admin-notice {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--success);
+      color: #000;
+      padding: 12px 20px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      z-index: 100;
+    }
+
+    .admin-notice.visible { opacity: 1; }
+
+    /* ---- Login Wall ---- */
+    .admin-login-wall {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .admin-login-box {
+      width: 100%;
+      max-width: 360px;
+      border: 1px solid var(--border);
+      padding: 40px;
+    }
+
+    .admin-login-title {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .admin-login-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .admin-login-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .admin-login-field label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .admin-login-error {
+      font-size: 12px;
+      color: var(--danger);
+      margin-bottom: 12px;
+      min-height: 16px;
+    }
+
+    /* ---- Buttons ---- */
+    .admin-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 7px 14px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .admin-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .admin-btn-primary {
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      color: #000;
+      padding: 9px 18px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      font-family: inherit;
+      transition: opacity 0.15s;
+    }
+
+    .admin-btn-primary:hover { opacity: 0.85; }
+
+    .admin-btn-danger {
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
+    .admin-btn-danger:hover {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    /* ---- Table ---- */
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .admin-table th {
+      text-align: left;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .admin-table td {
+      padding: 14px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    .admin-table tr:hover td { background: var(--bg2); }
+
+    .admin-product-name { color: var(--accent); margin-bottom: 2px; }
+    .admin-product-meta { font-size: 11px; color: var(--muted); }
+
+    .admin-actions { display: flex; gap: 8px; }
+
+    .admin-toggle {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      background: none;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .admin-toggle.on {
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    .admin-toggle.off { color: var(--muted); }
+
+    .admin-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+    .admin-empty {
+      color: var(--muted);
+      font-size: 13px;
+      padding: 32px 0;
+    }
+
+    /* ---- Form ---- */
+    .admin-form-panel {
+      margin-top: 32px;
+      border: 1px solid var(--border);
+      padding: 32px;
+      background: var(--bg2);
+    }
+
+    .admin-form-title {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+
+    .admin-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 640px) {
+      .admin-form-grid { grid-template-columns: 1fr; }
+    }
+
+    .admin-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .admin-field-wide {
+      grid-column: 1 / -1;
+    }
+
+    .admin-field label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .admin-hint {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .admin-form-actions {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* ---- Logout ---- */
+    .admin-logout {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    .admin-logout:hover { color: var(--accent); }
+
+    /* ---- Info box ---- */
+    .admin-info {
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .admin-info strong { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       LOGIN WALL
+       ============================================ -->
+  <div class="admin-login-wall" id="adminLoginWall">
+    <div class="admin-login-box">
+      <p class="admin-login-title">cashtoncatt</p>
+      <p class="admin-login-sub">Admin — enter your password to continue.</p>
+      <form id="adminLoginForm">
+        <div class="admin-login-field">
+          <label for="adminPassword">Password</label>
+          <input type="password" id="adminPassword" autocomplete="current-password" autofocus>
+        </div>
+        <p class="admin-login-error" id="loginError"></p>
+        <button type="submit" class="admin-btn-primary" style="width:100%">Enter →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================
+       DASHBOARD (hidden until authed)
+       ============================================ -->
+  <div id="adminDashboard" style="display:none">
+
+    <header class="admin-header">
+      <span class="admin-header__brand">cashtoncatt · Admin</span>
+      <div class="admin-header__right">
+        <a href="index.html" target="_blank">← View Site</a>
+        <button class="admin-logout" id="adminLogout">Log Out</button>
+      </div>
+    </header>
+
+    <main class="admin-main">
+
+      <div class="admin-info">
+        <strong>How products work:</strong> Changes you make here are saved in your browser and appear on the site immediately.
+        Use <strong>Export JSON</strong> to download an updated <code>products.js</code> file — upload it to your server to make changes permanent across all devices.
+        <br>Default password is <strong>chastoncatt2026</strong> — change it in <code>js/admin.js</code> line 8.
+      </div>
+
+      <p class="admin-section-title">Products</p>
+
+      <div id="adminProducts">
+        <!-- Rendered by admin.js -->
+      </div>
+
+      <div id="adminFormPanel" class="admin-form-panel" style="display:none">
+        <!-- Product form rendered by admin.js -->
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Notice toast -->
+  <div class="admin-notice" id="adminNotice"></div>
+
+  <script src="js/products.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

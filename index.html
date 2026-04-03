@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cashtoncatt — Handmade Jewelry, Los Angeles</title>
+  <meta name="description" content="cashtoncatt makes jewelry in small quantities. Limited edition pieces in sterling silver and 18ct gold vermeil, handmade in Los Angeles.">
+  <meta property="og:title" content="cashtoncatt — Handmade Jewelry">
+  <meta property="og:description" content="Limited edition. Made to order. Los Angeles.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav class="nav" id="nav">
+    <div class="nav__left">
+      <a href="index.html" class="nav__brand">
+        <img src="images/logo.png" alt="cashtoncatt" class="nav__logo">
+      </a>
+      <div class="nav__cats">
+        <a href="products.html" class="nav__link nav__link--cat">Jewelry</a>
+        <a href="products.html" class="nav__link nav__link--cat">Menswear</a>
+        <a href="products.html" class="nav__link nav__link--cat">Womenswear</a>
+        <a href="products.html" class="nav__link nav__link--cat">Everything Else</a>
+        <a href="#" class="nav__link nav__link--cat">Search</a>
+      </div>
+    </div>
+    <div class="nav__right">
+      <button class="nav__cart" id="cartToggle" aria-label="Open cart">
+        Cart <span class="nav__cart-badge" id="cartBadge1">0</span>
+      </button>
+      <button class="nav__mobile-toggle" id="mobileToggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="nav-mobile" id="navMobile" role="dialog" aria-label="Navigation">
+    <button class="nav-mobile__close" id="navMobileClose">Close</button>
+    <ul class="nav-mobile__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Collection</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ============================================
+       HERO IMAGE 1
+       ============================================ -->
+  <a href="products.html" class="hero-image-link">
+    <img src="images/hero-1.jpg" alt="cashtoncatt jewelry editorial" class="hero__image">
+  </a>
+
+  <!-- ============================================
+       HERO IMAGE 2
+       ============================================ -->
+  <a href="products.html" class="hero-image-link">
+    <img src="images/hero-2.jpg" alt="cashtoncatt jewelry editorial" class="hero__image">
+  </a>
+
+  <!-- ============================================
+       TICKER
+       ============================================ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>cashtoncatt</span><span class="ticker__sep">·</span>
+      <span>Limited Edition</span><span class="ticker__sep">·</span>
+      <span>2026</span><span class="ticker__sep">·</span>
+      <span>Sterling Silver</span><span class="ticker__sep">·</span>
+      <span>18ct Gold Vermeil</span><span class="ticker__sep">·</span>
+      <span>Made to Order</span><span class="ticker__sep">·</span>
+      <span>Handmade</span><span class="ticker__sep">·</span>
+      <span>Los Angeles</span><span class="ticker__sep">·</span>
+      <span>cashtoncatt</span><span class="ticker__sep">·</span>
+      <span>Limited Edition</span><span class="ticker__sep">·</span>
+      <span>2026</span><span class="ticker__sep">·</span>
+      <span>Sterling Silver</span><span class="ticker__sep">·</span>
+      <span>18ct Gold Vermeil</span><span class="ticker__sep">·</span>
+      <span>Made to Order</span><span class="ticker__sep">·</span>
+      <span>Handmade</span><span class="ticker__sep">·</span>
+      <span>Los Angeles</span><span class="ticker__sep">·</span>
+    </div>
+  </div>
+
+  <!-- ============================================
+       FEATURED PRODUCTS (2-up, loaded by JS)
+       ============================================ -->
+  <section class="featured-products container">
+    <div class="featured-products__header reveal">
+      <span class="label">Selected Pieces</span>
+      <a href="products.html" class="cta-link">View All <span class="arrow">→</span></a>
+    </div>
+    <div class="featured-grid" id="featuredGrid">
+      <!-- Rendered by js/main.js from products.js data -->
+    </div>
+  </section>
+
+  <!-- ============================================
+       PHILOSOPHY
+       ============================================ -->
+  <section class="philosophy">
+    <div class="philosophy__inner">
+      <blockquote class="philosophy__quote reveal">
+        "We make fewer things, better.<br>Each piece is numbered —<br>an edition of itself."
+      </blockquote>
+      <div class="philosophy__footer reveal reveal-d2">
+        <span class="label" style="color: var(--dark-muted);">cashtoncatt, Los Angeles</span>
+        <a href="about.html" class="cta-link" style="color: var(--dark-text);">
+          Our Practice <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       ABOUT TEASER
+       ============================================ -->
+  <section class="about-teaser">
+    <div class="about-teaser__inner container">
+      <div class="reveal">
+        <span class="label about-teaser__label">About the Studio</span>
+        <h2 class="display about-teaser__title">
+          Made in<br>small<br>quantities.
+        </h2>
+      </div>
+      <div class="reveal reveal-d2">
+        <p class="about-teaser__text">
+          cashtoncatt makes jewelry in small quantities. Each piece is considered from material to form — designed to be worn daily and kept indefinitely.
+        </p>
+        <p class="about-teaser__text">
+          We work with sterling silver and 18ct gold vermeil. Each edition is hand-finished and numbered in our Los Angeles studio.
+        </p>
+        <a href="about.html" class="cta-link about-teaser__cta">
+          Read More <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__brand">cashtoncatt</p>
+        <p class="footer__tagline">Objects of Permanence.</p>
+        <div class="footer__social">
+          <a href="https://instagram.com/chastoncatt" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">
+            <svg class="footer__social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+            Instagram
+          </a>
+          <a href="https://tiktok.com/@chastoncatt" target="_blank" rel="noopener" class="footer__social-link" aria-label="TikTok">
+            <svg class="footer__social-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.77 1.52V7.12a4.85 4.85 0 01-1-.43z"/>
+            </svg>
+            TikTok
+          </a>
+        </div>
+      </div>
+      <div>
+        <p class="footer__nav-label">Navigate</p>
+        <ul class="footer__nav">
+          <li><a href="products.html">Collection</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__nav-label">Information</p>
+        <ul class="footer__nav">
+          <li><a href="contact.html">Shipping &amp; Returns</a></li>
+          <li><a href="contact.html">Care Instructions</a></li>
+          <li><a href="contact.html">Sizing Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 cashtoncatt. All rights reserved.</span>
+        <span>Los Angeles, CA</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       PRODUCT MODAL
+       ============================================ -->
+  <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-label="Product details" tabindex="-1">
+    <div class="product-modal__backdrop" id="modalBackdrop"></div>
+    <div class="product-modal__panel">
+      <div class="product-modal__inner">
+        <button class="product-modal__close" id="modalClose" aria-label="Close">Back</button>
+
+        <div class="product-modal__image" id="modalImage"></div>
+
+        <span class="label product-modal__edition" id="modalEdition"></span>
+        <h2 class="product-modal__name" id="modalName"></h2>
+
+        <div class="product-modal__specs">
+          <div>
+            <p class="spec-label">Material</p>
+            <p class="spec-value" id="modalMaterial"></p>
+          </div>
+          <div>
+            <p class="spec-label">Edition</p>
+            <p class="spec-value" id="modalEditionCount"></p>
+          </div>
+          <div>
+            <p class="spec-label" id="modalSpec1L"></p>
+            <p class="spec-value" id="modalSpec1V"></p>
+          </div>
+          <div>
+            <p class="spec-label" id="modalSpec2L"></p>
+            <p class="spec-value" id="modalSpec2V"></p>
+          </div>
+        </div>
+
+        <div id="modalOptions"></div>
+
+        <p class="product-modal__description" id="modalDesc"></p>
+
+        <div class="product-modal__price-row">
+          <span class="product-modal__price" id="modalPrice"></span>
+          <span class="product-modal__avail" id="modalAvail"></span>
+        </div>
+
+        <button class="btn btn-primary" id="modalAddCart">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

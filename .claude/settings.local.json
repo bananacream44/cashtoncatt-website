@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -n \"script src\" /Users/josephhan/Desktop/chastoncatt/website/*.html)",
+      "Bash(npx --version)",
+      "Bash(php --version)",
+      "Bash(sed -i '' 's/font-size: clamp\\(22px, 3vw, 36px\\)/font-size: clamp\\(18px, 2.2vw, 28px\\)/g' /Users/josephhan/Desktop/chastoncatt/website/css/style.css)",
+      "Bash(sed -i '' 's/font-size: 22px;/font-size: 17px;/g' /Users/josephhan/Desktop/chastoncatt/website/css/style.css)",
+      "Bash(sed -i '' 's/font-size: 24px;/font-size: 18px;/g' /Users/josephhan/Desktop/chastoncatt/website/css/style.css)"
+    ]
+  }
+}
