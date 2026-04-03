@@ -984,16 +984,16 @@ ul { list-style: none; }
   border-top: 1px solid var(--border);
 }
 
-.footer__back-top {
-  text-align: center;
-  padding: 20px var(--px);
-  border-bottom: 1px solid var(--border);
-}
-
-.footer__back-top a {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+.footer__back-top-btn {
+  font-size: 13px;
+  font-weight: 400;
+  font-family: var(--font-serif);
+  color: var(--text);
+  background: none;
+  border: 1px solid var(--border-mid);
+  padding: 8px 16px;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .footer__inner {
