@@ -97,11 +97,11 @@ ul { list-style: none; }
 }
 
 .nav__logo {
-  height: 98px;
+  height: 112px;
   width: auto;
   display: block;
-  margin-top: calc((98px - var(--nav-height)) / -2);
-  margin-bottom: calc((98px - var(--nav-height)) / -2);
+  margin-top: calc((112px - var(--nav-height)) / -2);
+  margin-bottom: calc((112px - var(--nav-height)) / -2);
   transform: translateY(4px);
 }
 
@@ -129,7 +129,7 @@ ul { list-style: none; }
 }
 
 .nav__link--cat {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0;
@@ -159,7 +159,7 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0;
