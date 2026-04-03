@@ -15,8 +15,8 @@
   --border:       #E8E8E8;
   --border-mid:   #CCCCCC;
 
-  --font-serif: Arial, sans-serif;
-  --font-sans:  Arial, sans-serif;
+  --font-serif: 'EB Garamond', Georgia, serif;
+  --font-sans:  'EB Garamond', Georgia, serif;
 
   --nav-height:  64px;
   --max-width:   1400px;
@@ -129,10 +129,10 @@ ul { list-style: none; }
 }
 
 .nav__link--cat {
-  font-size: 9px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  font-size: 15px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .nav__link::after {
@@ -148,9 +148,10 @@ ul { list-style: none; }
 .nav__link.active::after { width: 100%; }
 
 @media (min-width: 768px) {
-  .nav__left  { display: flex; align-items: center; gap: 0; }
-  .nav__cats  { display: flex; align-items: center; gap: 28px; margin-left: 48px; }
-  .nav__right { display: flex; justify-content: flex-end; gap: 32px; align-items: center; }
+  .nav { justify-content: space-between; }
+  .nav__left  { display: flex; align-items: center; gap: 0; flex: 1; }
+  .nav__cats  { display: flex; align-items: center; justify-content: space-evenly; flex: 1; margin-left: 32px; }
+  .nav__right { display: flex; justify-content: flex-end; gap: 32px; align-items: center; flex: 0 0 auto; }
 }
 
 /* Cart button */
@@ -158,10 +159,10 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 9px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  font-size: 15px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
   position: relative;
   cursor: pointer;
   padding-bottom: 2px;
