@@ -997,7 +997,7 @@ ul { list-style: none; }
 }
 
 .footer__inner {
-  padding: 28px var(--px) 48px;
+  padding: 28px 24px 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1032,7 +1032,7 @@ ul { list-style: none; }
 }
 
 .footer__copyright {
-  padding: 0 var(--px) 20px;
+  padding: 0 24px 20px;
   font-size: 11px;
   color: var(--muted);
 }
