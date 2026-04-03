@@ -150,7 +150,7 @@ ul { list-style: none; }
 @media (min-width: 768px) {
   .nav { justify-content: space-between; }
   .nav__left  { display: flex; align-items: center; gap: 0; flex: 1; }
-  .nav__cats  { display: flex; align-items: center; justify-content: space-evenly; flex: 1; margin-left: 32px; }
+  .nav__cats  { display: flex; align-items: center; gap: 28px; margin-left: 32px; }
   .nav__right { display: flex; justify-content: flex-end; gap: 32px; align-items: center; flex: 0 0 auto; }
 }
 
