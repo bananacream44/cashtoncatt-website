@@ -1325,7 +1325,6 @@ ul { list-style: none; }
 }
 
 .footer__copyright {
-  padding: 0 24px 20px;
   font-size: 11px;
   color: var(--muted);
 }
