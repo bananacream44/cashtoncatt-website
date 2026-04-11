@@ -1289,19 +1289,28 @@ ul { list-style: none; }
   gap: 20px;
 }
 
-.footer__policy-links {
+.footer__left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer__policy-links,
+.footer__social-links {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.footer__policy-links a {
+.footer__policy-links a,
+.footer__social-links a {
   font-size: 13px;
   color: var(--text);
 }
 
-.footer__policy-links a:hover { text-decoration: underline; }
+.footer__policy-links a:hover,
+.footer__social-links a:hover { text-decoration: underline; }
 
 .footer__currency-select {
   font-family: var(--font-sans);
