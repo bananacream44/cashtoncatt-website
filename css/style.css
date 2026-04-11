@@ -162,7 +162,7 @@ ul { list-style: none; }
 .nav__dropdown-menu {
   display: none;
   position: absolute;
-  top: calc(100% + 12px);
+  top: 100%;
   left: 0;
   background: rgba(255,255,255,0.97);
   border: 1px solid var(--border);
@@ -178,7 +178,7 @@ ul { list-style: none; }
 
 .nav__dropdown-item {
   display: block;
-  padding: 10px 16px;
+  padding: 10px 20px;
   font-size: 13px;
   font-weight: 400;
   white-space: nowrap;
