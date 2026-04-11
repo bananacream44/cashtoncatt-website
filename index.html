@@ -24,16 +24,21 @@
         <img src="images/logo.png" alt="cashtoncatt" class="nav__logo">
       </a>
       <div class="nav__cats">
-        <a href="products.html" class="nav__link nav__link--cat">Shop All</a>
-        <a href="products.html" class="nav__link nav__link--cat">Tops</a>
-        <a href="products.html" class="nav__link nav__link--cat">Bottoms</a>
-        <a href="products.html" class="nav__link nav__link--cat">Outerwear</a>
-        <a href="products.html" class="nav__link nav__link--cat">Footwear</a>
-        <a href="products.html" class="nav__link nav__link--cat">Accessories</a>
+        <div class="nav__dropdown">
+          <a href="products.html" class="nav__link nav__link--cat nav__dropdown-toggle">Shop All</a>
+          <div class="nav__dropdown-menu">
+            <a href="products.html" class="nav__dropdown-item">All Products</a>
+            <a href="products.html?cat=tops" class="nav__dropdown-item">Tops</a>
+            <a href="products.html?cat=bottoms" class="nav__dropdown-item">Bottoms</a>
+            <a href="products.html?cat=footwear" class="nav__dropdown-item">Footwear</a>
+            <a href="products.html?cat=accessories" class="nav__dropdown-item">Accessories</a>
+          </div>
+        </div>
         <a href="#" class="nav__link nav__link--cat">Search</a>
       </div>
     </div>
     <div class="nav__right">
+      <button class="nav__account" id="accountToggle" aria-label="Account">Account</button>
       <button class="nav__cart" id="cartToggle" aria-label="Open cart">
         Cart <span class="nav__cart-badge" id="cartBadge1">0</span>
       </button>
@@ -120,6 +125,22 @@
   </footer>
 
   <!-- ============================================
+       ACCOUNT PANEL
+       ============================================ -->
+  <div class="account-panel" id="accountPanel" role="dialog" aria-modal="true" aria-label="Account" tabindex="-1">
+    <div class="account-panel__backdrop" id="accountBackdrop"></div>
+    <div class="account-panel__drawer">
+      <div class="account-panel__header">
+        <span class="account-panel__title" id="accountPanelTitle">Account</span>
+        <button class="account-panel__close" id="accountClose" aria-label="Close">✕</button>
+      </div>
+      <div class="account-panel__body" id="accountPanelBody">
+        <!-- Rendered by js/account.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
        PRODUCT MODAL
        ============================================ -->
   <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-label="Product details" tabindex="-1">
@@ -168,6 +189,7 @@
 
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/account.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
