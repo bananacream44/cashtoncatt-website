@@ -16,6 +16,19 @@
 <body>
 
   <!-- ============================================
+       SPLASH (shown when site is closed)
+       ============================================ -->
+  <div class="splash" id="splash" style="display:none">
+    <p class="splash__brand">cashtoncatt</p>
+    <div class="splash__form">
+      <div class="splash__error" id="splashError"></div>
+      <input class="splash__input" type="email" id="splashEmail" placeholder="Email" autocomplete="email">
+      <input class="splash__input" type="password" id="splashPassword" placeholder="Password" autocomplete="current-password">
+      <button class="splash__submit" id="splashSubmit">SUBMIT</button>
+    </div>
+  </div>
+
+  <!-- ============================================
        NAVIGATION
        ============================================ -->
   <nav class="nav" id="nav">
@@ -187,6 +200,7 @@
     </div>
   </div>
 
+  <script src="js/splash.js"></script>
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/account.js"></script>

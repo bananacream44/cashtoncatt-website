@@ -29,6 +29,92 @@ function logout() {
 }
 
 // ============================================
+// Toast
+// ============================================
+
+function showAdminNotice(msg) {
+  const el = document.getElementById('adminNotice');
+  if (!el) return;
+  el.textContent = msg;
+  el.classList.add('visible');
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('visible'), 2500);
+}
+
+// ============================================
+// Site Status
+// ============================================
+
+function adminIsSiteOpen() {
+  const val = localStorage.getItem('cc_site_open');
+  return val === null ? true : val === 'true';
+}
+
+function adminSetSiteOpen(open) {
+  localStorage.setItem('cc_site_open', open ? 'true' : 'false');
+}
+
+function adminGetBypassUsers() {
+  try {
+    return JSON.parse(localStorage.getItem('cc_bypass_users') || '[]');
+  } catch (e) {
+    return [];
+  }
+}
+
+function adminSaveBypassUsers(users) {
+  localStorage.setItem('cc_bypass_users', JSON.stringify(users));
+}
+
+function renderSiteStatus() {
+  const open = adminIsSiteOpen();
+  const label = document.getElementById('siteStatusLabel');
+  const toggle = document.getElementById('siteStatusToggle');
+  const sub = document.querySelector('.admin-status-sub');
+  if (!label) return;
+
+  label.textContent = open ? 'OPEN' : 'CLOSED';
+  label.className = 'admin-status-label ' + (open ? 'open' : 'closed');
+  toggle.textContent = open ? 'Set to CLOSED' : 'Set to OPEN';
+  sub.textContent = open
+    ? 'Visitors can access the site normally.'
+    : 'Site is closed. Only bypass users can enter.';
+}
+
+function renderBypassUsers() {
+  const list = document.getElementById('bypassUsersList');
+  if (!list) return;
+  const users = adminGetBypassUsers();
+
+  if (users.length === 0) {
+    list.innerHTML = '<p class="admin-empty">No bypass users added yet.</p>';
+    return;
+  }
+
+  list.innerHTML = users.map((u, i) => `
+    <div class="bypass-user-row">
+      <div>
+        <div class="bypass-user-email">${escAdm(u.email)}</div>
+        <div class="bypass-user-pw">Password: ${escAdm(u.password)}</div>
+      </div>
+      <button class="admin-btn admin-btn-danger" onclick="removeBypassUser(${i})">Remove</button>
+    </div>
+  `).join('');
+}
+
+function removeBypassUser(index) {
+  const users = adminGetBypassUsers();
+  users.splice(index, 1);
+  adminSaveBypassUsers(users);
+  renderBypassUsers();
+  showAdminNotice('Bypass user removed.');
+}
+
+function escAdm(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ============================================
 // Product Management
 // ============================================
 
@@ -395,6 +481,9 @@ function initAdmin() {
     loginForm?.closest('.admin-login-wall')?.remove();
     if (dashboard) dashboard.style.display = '';
     renderProductList();
+    renderSiteStatus();
+    renderBypassUsers();
+    initSiteStatusControls();
   } else {
     if (dashboard) dashboard.style.display = 'none';
   }
@@ -406,12 +495,44 @@ function initAdmin() {
       loginForm.closest('.admin-login-wall')?.remove();
       if (dashboard) dashboard.style.display = '';
       renderProductList();
+      renderSiteStatus();
+      renderBypassUsers();
+      initSiteStatusControls();
     } else {
       if (loginError) loginError.textContent = 'Incorrect password.';
     }
   });
 
   logoutBtn?.addEventListener('click', logout);
+}
+
+function initSiteStatusControls() {
+  document.getElementById('siteStatusToggle')?.addEventListener('click', () => {
+    const open = adminIsSiteOpen();
+    adminSetSiteOpen(!open);
+    renderSiteStatus();
+    showAdminNotice(open ? 'Site is now CLOSED.' : 'Site is now OPEN.');
+  });
+
+  document.getElementById('addBypassUser')?.addEventListener('click', () => {
+    const email = document.getElementById('bypassEmail').value.trim();
+    const password = document.getElementById('bypassPassword').value.trim();
+    if (!email || !password) {
+      showAdminNotice('Enter both email and password.');
+      return;
+    }
+    const users = adminGetBypassUsers();
+    if (users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
+      showAdminNotice('That email already exists.');
+      return;
+    }
+    users.push({ email, password });
+    adminSaveBypassUsers(users);
+    document.getElementById('bypassEmail').value = '';
+    document.getElementById('bypassPassword').value = '';
+    renderBypassUsers();
+    showAdminNotice('Bypass user added.');
+  });
 }
 
 document.addEventListener('DOMContentLoaded', initAdmin);

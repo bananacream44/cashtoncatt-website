@@ -358,6 +358,68 @@
     }
 
     .admin-info strong { color: var(--text); }
+
+    /* Site status */
+    .admin-site-status {
+      border: 1px solid var(--border);
+      padding: 24px;
+      background: var(--bg2);
+      margin-bottom: 0;
+    }
+
+    .admin-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .admin-status-label {
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .admin-status-label.open  { color: var(--success); }
+    .admin-status-label.closed { color: var(--danger); }
+
+    .admin-status-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .admin-status-toggle {
+      font-family: inherit;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      padding: 9px 18px;
+      border: 1px solid var(--border);
+      background: none;
+      color: var(--text);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+
+    .admin-status-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Bypass users table */
+    .bypass-user-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      gap: 16px;
+    }
+
+    .bypass-user-email { color: var(--accent); }
+    .bypass-user-pw { color: var(--muted); font-size: 11px; }
   </style>
 </head>
 <body>
@@ -395,7 +457,47 @@
 
     <main class="admin-main">
 
+      <!-- ============================================
+           SITE STATUS
+           ============================================ -->
+      <p class="admin-section-title">Site Status</p>
+
+      <div class="admin-site-status" id="adminSiteStatus">
+        <div class="admin-status-row">
+          <div>
+            <div class="admin-status-label" id="siteStatusLabel">OPEN</div>
+            <div class="admin-status-sub">Visitors can access the site normally.</div>
+          </div>
+          <button class="admin-status-toggle" id="siteStatusToggle">Set to CLOSED</button>
+        </div>
+      </div>
+
+      <p class="admin-section-title" style="margin-top:40px">Bypass Users <span style="font-size:10px;color:var(--muted);text-transform:none;letter-spacing:0;">(can access site when closed)</span></p>
+
       <div class="admin-info">
+        Add email + password pairs for users who can access the site even when it's closed.
+      </div>
+
+      <div id="bypassUsersList"></div>
+
+      <div class="admin-form-panel" style="margin-top:0">
+        <p class="admin-form-title">Add Bypass User</p>
+        <div class="admin-form-grid">
+          <div class="admin-field">
+            <label>Email</label>
+            <input type="email" id="bypassEmail" placeholder="user@example.com">
+          </div>
+          <div class="admin-field">
+            <label>Password</label>
+            <input type="text" id="bypassPassword" placeholder="Choose a password">
+          </div>
+        </div>
+        <div class="admin-form-actions">
+          <button class="admin-btn-primary" id="addBypassUser">Add User</button>
+        </div>
+      </div>
+
+      <div class="admin-info" style="margin-top:40px">
         <strong>How products work:</strong> Changes you make here are saved in your browser and appear on the site immediately.
         Use <strong>Export JSON</strong> to download an updated <code>products.js</code> file — upload it to your server to make changes permanent across all devices.
         <br>Default password is <strong>chastoncatt2026</strong> — change it in <code>js/admin.js</code> line 8.
